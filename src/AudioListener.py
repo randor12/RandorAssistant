@@ -6,6 +6,7 @@
 """
 
 import speech_recognition as sr
+import os
 
 
 class AudioListener:
@@ -13,6 +14,11 @@ class AudioListener:
         """
         Initialize Audio Listener
         """
+        self.GOOGLE_CLOUD_SPEECH_CREDENTIALS = os.getcwd()
+        index = self.GOOGLE_CLOUD_SPEECH_CREDENTIALS.index('src')
+        self.GOOGLE_CLOUD_SPEECH_CREDENTIALS = self.GOOGLE_CLOUD_SPEECH_CREDENTIALS[0:index]
+        self.GOOGLE_CLOUD_SPEECH_CREDENTIALS = os.path.join(self.GOOGLE_CLOUD_SPEECH_CREDENTIALS,
+                                                       'Randor Assistant-413444f14dd2.json')
 
     def startMicrophone(self):
         """
@@ -28,10 +34,9 @@ class AudioListener:
         # recognize speech with speech-to-text API
         text = None
         # recognize speech using Google Cloud Speech
-        GOOGLE_CLOUD_SPEECH_CREDENTIALS = r"""INSERT THE CONTENTS OF THE GOOGLE CLOUD SPEECH JSON CREDENTIALS FILE HERE"""
         try:
             # attempt to recognize the speech
-            text = r.recognize_google_cloud(audio, credentials_json=GOOGLE_CLOUD_SPEECH_CREDENTIALS)
+            text = r.recognize_google_cloud(audio, credentials_json=self.GOOGLE_CLOUD_SPEECH_CREDENTIALS)
             print("Google Cloud Speech thinks you said " + text)
         except sr.UnknownValueError:
             print("Google Cloud Speech could not understand audio")
