@@ -18,7 +18,8 @@ class AudioListener:
         index = self.GOOGLE_CLOUD_SPEECH_CREDENTIALS.index('src')
         self.GOOGLE_CLOUD_SPEECH_CREDENTIALS = self.GOOGLE_CLOUD_SPEECH_CREDENTIALS[0:index]
         self.GOOGLE_CLOUD_SPEECH_CREDENTIALS = os.path.join(self.GOOGLE_CLOUD_SPEECH_CREDENTIALS,
-                                                       'Randor Assistant-413444f14dd2.json')
+                                                            'Randor Assistant-413444f14dd2.json')
+        print("Google Auth JSON: ", self.GOOGLE_CLOUD_SPEECH_CREDENTIALS)  # display location of GOOGLE AUTH JSON
 
     def startMicrophone(self):
         """

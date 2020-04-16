@@ -4,8 +4,9 @@
 :description: Attempt at creating a smart assistant
 """
 
-from .AudioListener import AudioListener as al
-from .commands import Commands as cmd
+from AudioListener import AudioListener as al
+from commands import Commands as cmd
+
 
 def main():
     """
