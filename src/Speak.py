@@ -4,6 +4,7 @@
 :description: File that allows Randor Assistance to respond to speech requests
 """
 
+
 class Speak:
     def __init__(self):
         """
