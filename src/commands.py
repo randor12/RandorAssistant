@@ -30,3 +30,10 @@ class Commands:
         msg = "Pong!"
         print(msg)
         self.speak.respond(msg)
+
+    def search(self):
+        """
+        Search the internet for a request
+        :return: None
+        """
+        self.speak.search(self.command)
