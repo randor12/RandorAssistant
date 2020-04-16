@@ -19,6 +19,6 @@ class ChatBot:
         """
         response = ""
 
-        
+
 
         return response
