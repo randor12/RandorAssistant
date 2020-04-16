@@ -7,6 +7,7 @@
 
 import speech_recognition as sr
 import os
+import json
 
 
 class AudioListener:
@@ -14,11 +15,11 @@ class AudioListener:
         """
         Initialize Audio Listener
         """
-        self.GOOGLE_CLOUD_SPEECH_CREDENTIALS = os.getcwd()
-        index = self.GOOGLE_CLOUD_SPEECH_CREDENTIALS.index('src')
-        self.GOOGLE_CLOUD_SPEECH_CREDENTIALS = self.GOOGLE_CLOUD_SPEECH_CREDENTIALS[0:index]
-        self.GOOGLE_CLOUD_SPEECH_CREDENTIALS = os.path.join(self.GOOGLE_CLOUD_SPEECH_CREDENTIALS,
-                                                            'Randor Assistant-413444f14dd2.json')
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/randor/PycharmProjects/RandorAssistant/Randor Assistant-413444f14dd2.json"
+        with open(os.getenv("GOOGLE_APPLICATION_CREDENTIALS"), 'r') as f:
+            val = json.load(f)
+            self.GOOGLE_CLOUD_SPEECH_CREDENTIALS = r"""{}""".format(val)
+            self.GOOGLE_CLOUD_SPEECH_CREDENTIALS = self.GOOGLE_CLOUD_SPEECH_CREDENTIALS.replace("\'", "\"")
         print("Google Auth JSON: ", self.GOOGLE_CLOUD_SPEECH_CREDENTIALS)  # display location of GOOGLE AUTH JSON
 
     def startMicrophone(self):
@@ -37,7 +38,7 @@ class AudioListener:
         # recognize speech using Google Cloud Speech
         try:
             # attempt to recognize the speech
-            text = r.recognize_google_cloud(audio, credentials_json=self.GOOGLE_CLOUD_SPEECH_CREDENTIALS)
+            text = r.recognize_google_cloud(audio, language='en-US', credentials_json=self.GOOGLE_CLOUD_SPEECH_CREDENTIALS)
             print("Google Cloud Speech thinks you said " + text)
         except sr.UnknownValueError:
             print("Google Cloud Speech could not understand audio")
@@ -45,3 +46,7 @@ class AudioListener:
             print("Could not request results from Google Cloud Speech service; {0}".format(e))
 
         return text
+
+ex = AudioListener()
+
+ex.startMicrophone()
