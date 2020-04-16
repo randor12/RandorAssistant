@@ -3,6 +3,7 @@
 :date: April 15, 2020
 :description: Make a file for commands sent to the Smart Assistant
 """
+from .Speak import Speak as app
 
 
 class Commands:
@@ -11,6 +12,7 @@ class Commands:
         initialize Commands Class
         """
         self.command = cmd
+        self.speak = app()
 
     def result(self):
         """
@@ -25,4 +27,6 @@ class Commands:
         Make a ping-pong command to test if the voice assistant works correctly
         :return: Pong
         """
-        print("Pong!")
+        msg = "Pong!"
+        print(msg)
+        self.speak.respond(msg)
