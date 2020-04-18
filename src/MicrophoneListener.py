@@ -184,6 +184,7 @@ def main():
 
     with MicrophoneStream(RATE, CHUNK) as stream:
         audio_generator = stream.generator()
+        print("Start speaking...")
         requests = (types.cloud_speech_pb2.StreamingRecognizeRequest(audio_content=content)
                     for content in audio_generator)
 
