@@ -7,6 +7,7 @@
 from google.cloud import texttospeech
 from playsound import playsound
 import os
+from google.oauth2 import service_account
 
 
 class Speak:
@@ -14,7 +15,11 @@ class Speak:
         """
         Initialize Speak Class that allows for text-to-speech functionality
         """
-        self.client = texttospeech.TextToSpeechClient()
+        file = os.getenv('GOOGLE_APPLICATION_CREDENTIALS',
+                         '/home/randor/PycharmProjects/RandorAssistant/Randor Assistant-413444f14dd2.json')
+        credentials = service_account.Credentials.from_service_account_file(file)
+
+        self.client = texttospeech.TextToSpeechClient(credentials=credentials)
         self.voice = texttospeech.types.cloud_tts_pb2.VoiceSelectionParams(
             language_code='en-US',
             ssml_gender=texttospeech.enums.SsmlVoiceGender.FEMALE  # Can be MALE, FEMALE, or NEUTRAL

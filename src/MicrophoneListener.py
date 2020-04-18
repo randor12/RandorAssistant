@@ -12,6 +12,8 @@ from google.cloud.speech import enums
 from google.cloud.speech import types
 import pyaudio
 from six.moves import queue
+from google.oauth2 import service_account
+import os
 
 from Speak import Speak
 
@@ -145,6 +147,21 @@ def listen_print_loop(responses):
                 print('Exiting..')
                 break
 
+            if re.search(r'\b(hello|hi|hey)\b', transcript, re.I):
+                print("Hello, Ryan!")
+                speaker.respond("Hello Ryan")
+                break
+
+            if re.search(r'\b(bye|goodbye|see you later)\b', transcript, re.I):
+                print("See you later!")
+                speaker.respond("See you later")
+                break
+
+            if re.search(r'\b(how are you)\b', transcript, re.I):
+                print("I am good")
+                speaker.respond("I am good")
+                break
+
             num_chars_printed = 0
 
 
@@ -152,8 +169,11 @@ def main():
     # See http://g.co/cloud/speech/docs/languages
     # for a list of supported languages.
     language_code = 'en-US'  # a BCP-47 language tag
+    file = os.getenv('GOOGLE_APPLICATION_CREDENTIALS',
+                     '/home/randor/PycharmProjects/RandorAssistant/Randor Assistant-413444f14dd2.json')
+    credentials = service_account.Credentials.from_service_account_file(file)
 
-    client = speech.SpeechClient()
+    client = speech.SpeechClient(credentials=credentials)
     config = types.cloud_speech_pb2.RecognitionConfig(
         encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
         sample_rate_hertz=RATE,
