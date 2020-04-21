@@ -24,18 +24,21 @@ class Commands:
         emotions = ['how are you', 'how are you doing']
         activity = ["what's up", 'what are you doing', 'what you doing', 'what is up', 'whats up']
         name = ["what's your name", 'what is your name', 'whats your name']
-        if self.command == 'ping':
-            self.ping()
-        if any(x in self.command for x in greetings):
-            self.speak.respond("hello ryan")
-        elif any(x in self.command for x in leaving):
-            self.speak.respond('see you later')
-        if any(x in self.command for x in emotions):
-            self.speak.respond('i am doing well')
-        if any(x in self.command for x in activity):
-            self.speak.respond('i am not doing much ryan')
-        if any(x in self.command for x in name):
-            self.speak.respond('my name is ran door')
+        if self.command is not None:
+            if self.command == 'ping':
+                self.ping()
+            if any(x in self.command for x in greetings):
+                self.speak.respond("hello ryan")
+            elif any(x in self.command for x in leaving):
+                self.speak.respond('see you later')
+            if any(x in self.command for x in emotions):
+                self.speak.respond('i am doing well')
+            if any(x in self.command for x in activity):
+                self.speak.respond('i am not doing much ryan')
+            if any(x in self.command for x in name):
+                self.speak.respond('my name is ran door')
+        else:
+            self.speak.respond('i am sorry i did not get that')
 
 
 
