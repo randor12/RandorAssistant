@@ -52,6 +52,6 @@ class AudioListener:
 
         return text
 
-ex = AudioListener()
-
-ex.startMicrophone()
+# ex = AudioListener()
+#
+# ex.startMicrophone()
