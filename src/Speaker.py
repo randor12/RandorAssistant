@@ -6,7 +6,9 @@ Speaker Class in order to allow for Text-To-Speech without reliance on Google-Cl
 
 from gtts import gTTS
 from playsound import playsound
+import os
 import time
+from datetime import datetime
 
 
 class Speaker:
@@ -29,5 +31,16 @@ class Speaker:
         playsound('output.mp3')  # play output audio
         endTime = time.time()
         print("Finished Speaking: ", endTime - startTime)
+        os.remove('output.mp3')
+
+    def getTime(self):
+        """
+        Say the current time
+        :return: None
+        """
+        time = datetime.now()
+        currTime = time.strftime("%H:%M")
+        sayTime = "It is " + currTime
+        self.respond(sayTime)
 
 
