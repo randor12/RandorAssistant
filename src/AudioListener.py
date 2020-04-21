@@ -36,7 +36,7 @@ class AudioListener:
         with sr.Microphone() as source:
             r.adjust_for_ambient_noise(source)
             print("Say something!")
-            audio = r.listen(source)
+            audio = r.listen(source, phrase_time_limit=5)
 
         # recognize speech with speech-to-text API
         text = None
