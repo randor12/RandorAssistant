@@ -19,7 +19,9 @@ start creating applications instantly.
 - Ryan Nicholas
 
 # Sources:
--[Google Cloud, Accessed: April 21, 2020](https://cloud.google.com/speech-to-text/docs/how-to)
+- [Google Cloud, Accessed: April 21, 2020](https://cloud.google.com/speech-to-text/docs/how-to)
 
--[Rockikz, Abdou. "How To Convert Speech to Text in Python" Accessed: April 21, 2020](https://www.thepythoncode.com/article/using-speech-recognition-to-convert-speech-to-text-python)
+- [Rockikz, Abdou. "How To Convert Speech to Text in Python" Accessed: April 21, 2020](https://www.thepythoncode.com/article/using-speech-recognition-to-convert-speech-to-text-python)
+
+- [Durette, Pierre. "gTTS 2.1.1" Accessed: April 21, 2020](https://pypi.org/project/gTTS/)
 
