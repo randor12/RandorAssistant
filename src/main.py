@@ -13,15 +13,19 @@ def main():
     Main code here
     :return: None
     """
-    mic = al()
-    text = mic.startMicrophone()
-    # check if the person is talking to the smart assistant
-    if text.lower() == 'hey randor':
-        # initialize recording sound for a command
-        command = mic.startMicrophone()
-        response = cmd(command)
-        # respond to the command
-        response.result()
+    while True:
+        mic = al()
+        text = mic.startMicrophone()
+        # check if the person is talking to the smart assistant
+        if text is not None and text.lower() == 'hey randor':
+            # initialize recording sound for a command
+            print("State Command: ")
+            command = mic.startMicrophone()
+            response = cmd(command)
+            # respond to the command
+            response.result()
+        if text is not None and text.lower() == 'exit':
+            break
 
 
 if __name__ == '__main__':

@@ -21,6 +21,8 @@ class Commands:
         """
         if self.command == 'ping':
             self.ping()
+        if self.command == 'hello':
+            self.speak.respond("Hello, Ryan!")
 
     def ping(self):
         """
