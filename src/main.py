@@ -18,7 +18,7 @@ def main():
         mic = al()
         text = mic.startMicrophone()
         # check if the person is talking to the smart assistant
-        if text is not None and text.lower() == 'hey randor':
+        if text is not None and 'hey randor' in text.lower():
             speak = Speaker()
             speak.respond('Go ahead Ryan')
             # initialize recording sound for a command
@@ -27,7 +27,7 @@ def main():
             response = cmd(command)
             # respond to the command
             response.result()
-        if text is not None and text.lower() == 'exit':
+        if text is not None and 'exit' in text.lower():
             break
 
 
