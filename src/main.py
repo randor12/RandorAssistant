@@ -6,6 +6,7 @@
 
 from AudioListener import AudioListener as al
 from commands import Commands as cmd
+from Speaker import Speaker
 
 
 def main():
@@ -18,6 +19,8 @@ def main():
         text = mic.startMicrophone()
         # check if the person is talking to the smart assistant
         if text is not None and text.lower() == 'hey randor':
+            speak = Speaker()
+            speak.respond('Go ahead Ryan')
             # initialize recording sound for a command
             print("State Command: ")
             command = mic.startMicrophone()
