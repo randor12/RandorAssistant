@@ -42,3 +42,17 @@ class Speaker:
         currTime = time.strftime("%I:%M %p")
         sayTime = "It is " + currTime
         self.respond(sayTime)
+
+    def scrape(self, req):
+        """
+        Search for a topic and scrape the internet for the information
+        :param req: request to be searched
+        :return:
+        """
+
+    def search(self, req):
+        """
+        Search the internet for an answer to a question and say the top response
+        :param req: request to the internet
+        :return: None
+        """
