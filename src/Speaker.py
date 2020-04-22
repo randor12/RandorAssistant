@@ -39,8 +39,6 @@ class Speaker:
         :return: None
         """
         time = datetime.now()
-        currTime = time.strftime("%H:%M")
+        currTime = time.strftime("%I:%M %p")
         sayTime = "It is " + currTime
         self.respond(sayTime)
-
-

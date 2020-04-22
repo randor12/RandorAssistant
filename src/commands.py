@@ -24,6 +24,7 @@ class Commands:
         emotions = ['how are you', 'how are you doing']
         activity = ["what's up", 'what are you doing', 'what you doing', 'what is up', 'whats up']
         name = ["what's your name", 'what is your name', 'whats your name']
+        time = ['what time is it', "what's the time", 'what is the time']
         if self.command is not None:
             if self.command == 'ping':
                 self.ping()
@@ -37,6 +38,8 @@ class Commands:
                 self.speak.respond('i am not doing much ryan')
             if any(x in self.command for x in name):
                 self.speak.respond('my name is ran door')
+            if any(x in self.command for x in time):
+                self.speak.getTime()
         else:
             self.speak.respond('i am sorry i did not get that')
 
