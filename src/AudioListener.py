@@ -16,6 +16,7 @@ import time
 from Speak import Speak as sp
 from commands import Commands as cmd
 import random
+import playsound
 
 
 class AudioListener:
@@ -96,6 +97,7 @@ class AudioListener:
             self.command = True
             speakResponse = random.choice(self.speakingStartResponses)
             self.speaker.respond(speakResponse)
+            playsound.playsound('beep.mp3')
 
     def backgroundListener(self):
         """
