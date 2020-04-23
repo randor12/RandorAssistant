@@ -112,7 +112,9 @@ class AudioListener:
                 yield self.text
             time.sleep(0.1)
 
-        stop_audio()
+        stop_audio(wait_for_stop=False)
+        for i in range(50):
+            time.sleep(0.1)
 
 # ex = AudioListener()
 #
