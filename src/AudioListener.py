@@ -12,10 +12,9 @@
 import speech_recognition as sr
 import os
 import json
-import asyncio
 import time
 from Speaker import Speaker as sp
-from command import Commands as cmd
+from commands import Commands as cmd
 import random
 
 
@@ -35,7 +34,7 @@ class AudioListener:
         self.text = ""
         self.command = False
         self.speakingStartResponses = ['go ahead ryan', 'i am listening',
-                                    'what is it ryan', 'how can i help ryan']
+                                       'what is it ryan', 'how can i help ryan']
 
     def startMicrophone(self):
         """
@@ -68,53 +67,53 @@ class AudioListener:
         Callback funtion to recognize noise in the background
         :return: None
         """
-        previousText = self.text
+        # attempt to recognize words being said, check for errors
         try:
+            # convert speech to text
             self.text = recognizer.recognize_google(audio, language='en-US')
             print("Randor Assistant thinks you said: ", self.text)
         except sr.UnknownValueError:
-            self.text = previousText
+            # if the audio could not be understood
+            self.text = None
             print("Randor Assistant Could Not Understand You")
         except sr.RequestError as e:
-            self.text = previousText
+            # if there is an internal error with Google or
+            # no internet connection
+            self.text = None
             print("Could not request results form Google services; {0}".format(e))
 
-        if self.text not None and 'randor' in self.text and not self.command:
+        if self.command:
+            # respond to a command
+            response = cmd(self.text)
+            response.result()
+            self.command = False
+
+        if self.text is not None and 'randor' in self.text and not self.command:
+            # Check if randor was called and it is not in command mode
             self.command = True
             speaking = sp()
             speakResponse = random.choice(self.speakingStartResponses)
             speaking.respond(speakResponse)
 
-        if self.command:
-            response = cmd(self.text)
-            self.command = False
-
-
-
-    async def backgroundListener(self):
+    def backgroundListener(self):
         """
         Start listening from the background and call a
         callback function in order to allow for the assistant to
         communicate
         :return: Return the text that is sent from the background noise
         """
+        print("Starting up")
         stop_audio = self.r.listen_in_background(self.source, self.callback)
-        previousText = ""
-        sameAsBefore = True
-        while 'exit' not in self.text:
-            if previousText == self.text:
-                sameAsBefore = True
-            else:
-                sameAsBefore = False
-                previousText = self.text
-            await asyncio.sleep(1)
-            if self.text not None and not sameAsBefore:
-                yield self.text
+        print("Go ahead and speak! Randor is listening! ")
+        while self.text is None or 'exit' not in self.text:
+            # Loop until told to stop looping
+            time.sleep(0.1)  # time pause to not overload CPU
+
+        print("Exiting...")
+        stop_audio(wait_for_stop=False)  # Stop the audio listener
+        for i in range(50):  # give 5 seconds to stop background proccess
             time.sleep(0.1)
 
-        stop_audio(wait_for_stop=False)
-        for i in range(50):
-            time.sleep(0.1)
 
 ex = AudioListener()
 
