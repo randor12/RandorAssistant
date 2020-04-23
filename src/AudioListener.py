@@ -13,7 +13,7 @@ import speech_recognition as sr
 import os
 import json
 import time
-from Speaker import Speaker as sp
+from Speak import Speak as sp
 from commands import Commands as cmd
 import random
 
@@ -33,6 +33,7 @@ class AudioListener:
         self.source = sr.Microphone()
         self.text = ""
         self.command = False
+        self.speaker = sp()
         self.speakingStartResponses = ['go ahead ryan', 'i am listening',
                                        'what is it ryan', 'how can i help ryan']
 
@@ -93,9 +94,8 @@ class AudioListener:
         if self.text is not None and (any(x in self.text for x in commonNameSpells)) and not self.command:
             # Check if randor was called and it is not in command mode
             self.command = True
-            speaking = sp()
             speakResponse = random.choice(self.speakingStartResponses)
-            speaking.respond(speakResponse)
+            self.speaker.respond(speakResponse)
 
     def backgroundListener(self):
         """

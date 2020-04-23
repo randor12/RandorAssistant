@@ -1,0 +1,26 @@
+{
+  "greetings": {
+    "request": ["hello", "hi", "hey", "nice to meet you", "nice to see you again", "good to see you", "nice to see you"],
+    "response": ["hello", "hi", "hey", "nice to see you"]
+  },
+  "leaving": {
+    "request": ["bye", "goodbye", "see you later", "see you", "see ya", "adios"],
+    "response": ["see you later", "goodbye", "bye"]
+  },
+  "emotions": {
+    "request": ["how are you", "how you doing", "how are you feeling", "are you doing well", "are you doing ok"],
+    "response": ["i am doing well", "i am doing good"]
+  },
+  "actions": {
+    "request": ["what are you doing", "what's up", "what is up", "what you doing", "sup"],
+    "response": ["i am not doing much", "i am bored"]
+  },
+  "name": {
+    "request": ["what is your name", "what's your name", "do you have a name"],
+    "response": ["my name is ran door", "my name is ran door      i am an artificial intelligent robot"]
+  },
+  "ping": {
+    "request": ["ping"],
+    "response": ["pong"]
+  }
+}

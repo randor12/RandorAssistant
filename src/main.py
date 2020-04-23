@@ -12,8 +12,11 @@ def main():
     Main code here
     :return: None
     """
-    mic = al()
-    mic.backgroundListener()
+    try:
+        mic = al()
+        mic.backgroundListener()
+    except KeyboardInterrupt:
+        print("Exited program")
     # # check if the person is talking to the smart assistant
     # if text is not None and 'hey randor' in text.lower():
     #     speak = Speaker()

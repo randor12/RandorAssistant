@@ -3,7 +3,7 @@
 :date: April 15, 2020
 :description: Make a file for commands sent to the Smart Assistant
 """
-from Speaker import Speaker as app
+from Speak import Speak as app
 
 
 class Commands:
