@@ -21,7 +21,7 @@ class Commands:
         """
         greetings = ['hello', 'hey', 'hi']
         leaving = ['bye', 'goodbye', 'adios', 'see you later']
-        emotions = ['how are you', 'how are you doing']
+        emotions = ['how are you', 'how are you doing', 'how you''re doing']
         activity = ["what's up", 'what are you doing', 'what you doing', 'what is up', 'whats up']
         name = ["what's your name", 'what is your name', 'whats your name']
         time = ['what time is it', "what's the time", 'what is the time']
