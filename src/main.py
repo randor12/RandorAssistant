@@ -5,8 +5,6 @@
 """
 
 from AudioListener import AudioListener as al
-from commands import Commands as cmd
-from Speaker import Speaker
 
 
 def main():
@@ -14,21 +12,20 @@ def main():
     Main code here
     :return: None
     """
-    while True:
-        mic = al()
-        text = mic.startMicrophone()
-        # check if the person is talking to the smart assistant
-        if text is not None and 'hey randor' in text.lower():
-            speak = Speaker()
-            speak.respond('Go ahead Ryan')
-            # initialize recording sound for a command
-            print("State Command: ")
-            command = mic.startMicrophone()
-            response = cmd(command)
-            # respond to the command
-            response.result()
-        if text is not None and 'exit' in text.lower():
-            break
+    mic = al()
+    mic.backgroundListener()
+    # # check if the person is talking to the smart assistant
+    # if text is not None and 'hey randor' in text.lower():
+    #     speak = Speaker()
+    #     speak.respond('Go ahead Ryan')
+    #     # initialize recording sound for a command
+    #     print("State Command: ")
+    #     command = mic.startMicrophone()
+    #     response = cmd(command)
+    #     # respond to the command
+    #     response.result()
+    # if text is not None and 'exit' in text.lower():
+    #     break
 
 
 if __name__ == '__main__':

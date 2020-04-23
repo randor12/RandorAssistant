@@ -88,7 +88,9 @@ class AudioListener:
             response.result()
             self.command = False
 
-        if self.text is not None and 'randor' in self.text and not self.command:
+        commonNameSpells = ['randor', 'ran door', 'randeur']
+
+        if self.text is not None and (any(x in self.text for x in commonNameSpells)) and not self.command:
             # Check if randor was called and it is not in command mode
             self.command = True
             speaking = sp()
@@ -103,18 +105,20 @@ class AudioListener:
         :return: Return the text that is sent from the background noise
         """
         print("Starting up")
-        stop_audio = self.r.listen_in_background(self.source, self.callback)
+        stop_audio = self.r.listen_in_background(self.source, self.callback, phrase_time_limit=5)
         print("Go ahead and speak! Randor is listening! ")
         while self.text is None or 'exit' not in self.text:
             # Loop until told to stop looping
             time.sleep(0.1)  # time pause to not overload CPU
 
         print("Exiting...")
+        byeCommand = cmd('bye')
+        byeCommand.result()
         stop_audio(wait_for_stop=False)  # Stop the audio listener
         for i in range(50):  # give 5 seconds to stop background proccess
             time.sleep(0.1)
 
 
-ex = AudioListener()
-
-ex.backgroundListener()
+# ex = AudioListener()
+#
+# ex.backgroundListener()
