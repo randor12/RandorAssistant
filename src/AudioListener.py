@@ -116,6 +116,6 @@ class AudioListener:
         for i in range(50):
             time.sleep(0.1)
 
-# ex = AudioListener()
-#
-# ex.startMicrophone()
+ex = AudioListener()
+
+ex.backgroundListener()
