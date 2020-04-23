@@ -89,7 +89,7 @@ class Speak:
         if WEATHER_API_KEY is not None:
             # url -> base url + ?q={city, state, country code}&appid={API KEY}
             locations = ['blacksburg,virginia', 'monroe,connecticut']
-            url = "http://api.openweathermap.org/data/2.5/weather?q=" + locations[1] + "&appid=" + WEATHER_API_KEY
+            url = "http://api.openweathermap.org/data/2.5/weather?q=" + locations[0] + "&appid=" + WEATHER_API_KEY
             response = requests.get(url)
             x = response.json()
             if x["cod"] != "404":
@@ -106,7 +106,7 @@ class Speak:
                 if 'sky' in description:
                     description = description.replace('sky', 'skies')
 
-                msg = "It is " + fTemp + " degrees Fahrenheit in " + locations[1] + ". " \
+                msg = "It is " + fTemp + " degrees Fahrenheit in " + locations[0] + ". " \
                                          "It feels " + fFeels + ". the pressure is " \
                                                                 "" + curr_pressure + " hPa. "
                 msg += "The humidity is " + curr_humidity + " percent. The weather outside is " + description
