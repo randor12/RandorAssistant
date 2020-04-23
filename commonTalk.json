@@ -8,7 +8,7 @@
     "response": ["see you later", "goodbye", "bye"]
   },
   "emotions": {
-    "request": ["how are you", "how you doing", "how are you feeling", "are you doing well", "are you doing ok"],
+    "request": ["how are you", "how you doing", "how are you feeling", "are you doing well", "are you doing ok", "how you're doing"],
     "response": ["i am doing well", "i am doing good"]
   },
   "actions": {
