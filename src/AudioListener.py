@@ -39,6 +39,7 @@ class AudioListener:
         self.source = sr.Microphone()
         self.text = ""
         self.command = False
+        self.count = 0
         self.speakingStartResponses = ['go ahead ryan', 'i am listening',
                                        'what is it ryan', 'how can i help ryan']
 
@@ -90,15 +91,24 @@ class AudioListener:
 
         if self.command:
             # respond to a command
-            response = cmd(self.text)
-            response.result()
-            self.command = False
+            if platform == 'linux' or platform == 'linux2':
+                if self.count == 1:
+                    response = cmd(self.text)
+                    response.result()
+                    self.command = False
+                else:
+                    self.count = self.count + 1
+            else:
+                response = cmd(self.text)
+                response.result()
+                self.command = False
 
         commonNameSpells = ['randor', 'ran door', 'randeur']
 
         if self.text is not None and (any(x in self.text for x in commonNameSpells)) and not self.command:
             # Check if randor was called and it is not in command mode
             self.command = True
+            self.count = 0
             speakResponse = random.choice(self.speakingStartResponses)
             self.speaker.respond(speakResponse)
             playsound.playsound('beep.mp3')
