@@ -15,6 +15,7 @@ import json
 import os
 from os import path
 import requests
+from sys import platform
 
 
 def KToF(temp):
@@ -28,18 +29,30 @@ def KToF(temp):
     F = round(F, 0)
     return F
 
+
 class Speak:
     def __init__(self):
         """
         Initialize Speak Class that allows for text-to-speech functionality
         """
-        self.engine = pyttsx3.init()
-        self.engine.setProperty('rate', 160)  # set the rate of speaking
+        index = 1
+        if platform == 'linux' or platform == 'linux2':
+            print("Linux")
+            self.engine = pyttsx3.init('espeak')
+            self.engine.setProperty('rate', 140)
+            index = 16
+        else:
+            self.engine = pyttsx3.init()
+            self.engine.setProperty('rate', 160)  # set the rate of speaking
         self.engine.setProperty('volume', 1.0)  # set the volume (btwn 0-1)
         voices = self.engine.getProperty('voices')  # get voices
+
         # voices[0].id == MALE
         # voices[1].id == FEMALE
-        self.engine.setProperty('voice', voices[1].id)  # set voice
+        if index != 16:
+            self.engine.setProperty('voice', voices[index].id)  # set voice
+        else:
+            self.engine.setProperty('voice', voices[11].id)
 
 
     def respond(self, msg):
