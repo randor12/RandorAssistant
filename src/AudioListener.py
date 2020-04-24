@@ -14,9 +14,11 @@ import os
 import json
 import time
 from Speak import Speak as sp
+from Speaker import Speaker as sp2
 from commands import Commands as cmd
 import random
 import playsound
+from sys import platform
 
 
 class AudioListener:
@@ -31,10 +33,12 @@ class AudioListener:
         #     self.GOOGLE_CLOUD_SPEECH_CREDENTIALS = self.GOOGLE_CLOUD_SPEECH_CREDENTIALS.replace("\'", "\"")
         # print("Google Auth JSON: ", self.GOOGLE_CLOUD_SPEECH_CREDENTIALS)  # display location of GOOGLE AUTH JSON
         self.r = sr.Recognizer()
+        self.speaker = sp()
+        if platform == 'linux' or platform == 'linux2':
+            self.speaker = sp2()
         self.source = sr.Microphone()
         self.text = ""
         self.command = False
-        self.speaker = sp()
         self.speakingStartResponses = ['go ahead ryan', 'i am listening',
                                        'what is it ryan', 'how can i help ryan']
 

@@ -4,6 +4,8 @@
 :description: Make a file for commands sent to the Smart Assistant
 """
 from Speak import Speak as app
+from Speaker import Speaker as app2
+from sys import platform
 
 
 class Commands:
@@ -13,6 +15,8 @@ class Commands:
         """
         self.command = cmd
         self.speak = app()
+        if platform == 'linux' or platform == 'linux2':
+            self.speak = app2()
 
     def result(self):
         """

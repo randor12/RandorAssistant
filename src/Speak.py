@@ -37,7 +37,6 @@ class Speak:
         """
         index = 1
         if platform == 'linux' or platform == 'linux2':
-            print("Linux")
             self.engine = pyttsx3.init('espeak')
             self.engine.setProperty('rate', 140)
             index = 16
