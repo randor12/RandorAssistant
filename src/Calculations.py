@@ -12,18 +12,24 @@ class Calculations:
         Initialize the Calculations Class
         :return: None
         """
-        self.app_id = "WOLFRAMALPHA_APP_ID"
-        self.client = wolframalpha.Client(self.app_id)
-    
+        self.client = None
+        try:
+            self.app_id = "WOLFRAMALPHA_APP_ID"
+            self.client = wolframalpha.Client(self.app_id)
+        except Exception as e:
+            print("Sorry, that API Key did not work")
+
     def calc(self, req):
         """
-        :param req: Request to be calculated 
-        :return: None
+        :param req: Request to be calculated
+        :return: Return the answer to the calculation or return None if
+        there was an exception
         """
-        index = req.lower().split().index('calculate')
-        query = req.split()[index + 1:]
-        response = client.query(' '.join(query))
-        answer = next(response.results).text
-        return answer
-
-
+        try:
+            index = req.lower().split().index('calculate')
+            query = req.split()[index + 1:]
+            response = self.client.query(' '.join(query))
+            answer = next(response.results).text
+            return answer
+        except Exception as e:
+            return None

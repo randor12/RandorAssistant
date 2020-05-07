@@ -110,9 +110,15 @@ class Speaker:
         :return:
         """
 
-    def search(self, req):
+    def search(self, msg):
         """
-        Search the internet for an answer to a question and say the top response
-        :param req: request to the internet
+        Search the web for a certain request
+        :param msg: request to search the internet
         :return: None
         """
+        web = Scraper()
+        res = web.search(msg)
+        if res is not None:
+            self.respond("Sorry, I could not find an answer to that")
+        else:
+            self.respond("I found this on the web. " + str(res))

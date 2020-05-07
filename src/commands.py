@@ -6,6 +6,7 @@
 from Speak import Speak as app
 from Speaker import Speaker as app2
 from sys import platform
+from Calculate import Calculate
 
 
 class Commands:
@@ -48,6 +49,10 @@ class Commands:
                 self.speak.getTime()
             if any(x in self.command for x in weather):
                 self.speak.getWeather()
+            if 'search' in self.command:
+                self.search()
+            if 'calculate' in self.command:
+                self.calculate()
         else:
             self.speak.respond('i am sorry i did not get that')
 
@@ -61,6 +66,18 @@ class Commands:
         msg = "Pong!"
         print(msg)
         self.speak.respond(msg)
+
+    def calculate(self):
+        """
+        Calculate a value
+        :return: None
+        """
+        calc = Calculate()
+        answer = calc.calc(self.command)
+        if answer is not None:
+            self.speak.respond(answer)
+        else:
+            self.speak.respond("Sorry, I could not calculate that")
 
     def search(self):
         """

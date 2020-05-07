@@ -16,6 +16,7 @@ import os
 from os import path
 import requests
 from sys import platform
+from Scraper import Scraper
 
 
 def KToF(temp):
@@ -84,6 +85,12 @@ class Speak:
         :param msg: request to search the internet
         :return: None
         """
+        web = Scraper()
+        res = web.search(msg)
+        if res is not None:
+            self.respond("Sorry, I could not find an answer to that")
+        else:
+            self.respond("I found this on the web. " + str(res))
 
     def getWeather(self):
         """

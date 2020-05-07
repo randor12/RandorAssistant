@@ -28,29 +28,32 @@ class Scraper:
         """
         Search for a topic and scrape the internet for data on the topic
         :param topic: topic to scrape
-        :return: None
+        :return: return the search response
         """
 
-        if 'youtube' in topic.lower():
-            index = topic.lower().split('youtube')
-            query = topic.split()[index + 1:]
-            self.driver.get("http://www.youtube.com/results?search_query =" + '+'.join(query))
-            return 
-        elif 'wikipedia' in topic.lower():
-            index = topic.lower().split('wikipedia')
-            query = topic.split()[index + 1:]
-            driver.get("https://en.wikipedia.org/wiki/" + "_".join(query))
-            return
-        else:
-            if 'google' in topic.lower():
-                index = topic.lower().split().index('google')
-                query = topic.split()[index + 1:]
-                driver.get("https://www.google.com/search?q =" + '+'.join(query))
-            elif 'search' in topic.lower():
-                index = topic.lower().split().index('search')
-                query = topic.split()[index + 1:]
-                driver.get("https://www.google.com/search?q =" + '+'.join(query))
-            else:
-                driver.get("https://www.google.com/search?q =" + '+'.join(topic.split()))
-            return
+        answer = None
 
+        try:
+            if 'youtube' in topic.lower():
+                index = topic.lower().split('youtube')
+                query = topic.split()[index + 1:]
+                answer = self.driver.get("http://www.youtube.com/results?search_query =" + '+'.join(query))
+            elif 'wikipedia' in topic.lower():
+                index = topic.lower().split('wikipedia')
+                query = topic.split()[index + 1:]
+                answer = self.driver.get("https://en.wikipedia.org/wiki/" + "_".join(query))
+            else:
+                if 'google' in topic.lower():
+                    index = topic.lower().split().index('google')
+                    query = topic.split()[index + 1:]
+                    answer = self.driver.get("https://www.google.com/search?q =" + '+'.join(query))
+                elif 'search' in topic.lower():
+                    index = topic.lower().split().index('search')
+                    query = topic.split()[index + 1:]
+                    answer = self.driver.get("https://www.google.com/search?q =" + '+'.join(query))
+                else:
+                    answer = self.driver.get("https://www.google.com/search?q =" + '+'.join(topic.split()))
+        except Exception as e:
+            print("Could not find that on the internet")
+
+        return answer
