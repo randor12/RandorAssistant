@@ -44,3 +44,5 @@ to improve.
 - [Bhat, Natesh. "pyttsx3 2.87" Accessed: April 23, 2020](https://pypi.org/project/pyttsx3/)
 
 - [AnkitRai01. “Python: Real Time Weather Detection Using Tkinter.” GeeksforGeeks, 26 Dec. 2018, www.geeksforgeeks.org/python-real-time-weather-detection-using-tkinter/?ref=rp.](https://www.geeksforgeeks.org/python-real-time-weather-detection-using-tkinter/?ref=rp)
+
+- [Kumar, Sheetansh. "Personal Voice Assistant in Python". GeeksforGeeks. Accessed: May 6, 2020](https://www.geeksforgeeks.org/personal-voice-assistant-in-python/)
