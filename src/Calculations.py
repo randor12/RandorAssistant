@@ -5,6 +5,9 @@
 """
 
 import wolframalpha
+import os
+from os import path
+import json
 
 class Calculations:
     def __init__(self):
@@ -14,7 +17,16 @@ class Calculations:
         """
         self.client = None
         try:
-            self.app_id = "WOLFRAMALPHA_APP_ID"
+            self.app_id = os.getenv("WOLFRAMALPHA_APP_ID")
+
+            if (path.exists('config.json') and self.app_id is None):
+                with open('config.json') as f:
+                    data = json.load(f)
+                    try:
+                        self.app_id = data['WOLFRAMALPHA_APP_ID']
+                    except Exception:
+                        self.app_id = None
+
             self.client = wolframalpha.Client(self.app_id)
         except Exception as e:
             print("Sorry, that API Key did not work")
