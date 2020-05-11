@@ -22,5 +22,17 @@
   "ping": {
     "request": ["ping"],
     "response": ["pong"]
+  },
+  "math": {
+    "request": ["calculate", "add", "multiply", "divide", "subtract"],
+    "response": ["the answer is "]
+  },
+  "weather": {
+    "request": ["what is the weather", "what's the weather", "what's the temperature", "what is the temperature"],
+    "response": ["the weather is "]
+  },
+  "search": {
+    "request": ["search google", "search", "search wikipedia", "search youtube"],
+    "response": ["here is what I found ", "here's what I found ", "I found this on the web. "]
   }
 }
