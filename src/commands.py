@@ -28,7 +28,7 @@ class Commands:
         leaving = ['bye', 'goodbye', 'adios', 'see you later']
         emotions = ['how are you', 'how are you doing', 'how you''re doing']
         activity = ["what's up", 'what are you doing', 'what you doing', 'what is up', 'whats up']
-        name = ["what's your name", 'what is your name', 'whats your name']
+        name = ["what's your name", 'what is your name', 'whats your name', "what are you", "do you have a name"]
         time = ['what time is it', "what's the time", 'what is the time']
         weather = ['what is the weather', "what's the weather", "what is the temperature", "what's the temperature",
                    'what the temperature', 'what the weather']
@@ -43,7 +43,7 @@ class Commands:
                 self.speak.respond('i am doing well')
             if any(x in self.command for x in activity):
                 self.speak.respond('i am not doing much ryan')
-            if any(x in self.command for x in name):
+            elif any(x in self.command for x in name):
                 self.speak.respond('my name is ran door')
             if any(x in self.command for x in time):
                 self.speak.getTime()
