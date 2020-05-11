@@ -8,6 +8,7 @@
 # in case of need for PyAudio installation being needed for Windows,
 # go to: https://www.lfd.uci.edu/~gohlke/pythonlibs/
 # Files will show python version and check for 32 bit or 64 bit version
+# Use pip install {python file} to install PyAudio 
 
 import speech_recognition as sr
 import os
