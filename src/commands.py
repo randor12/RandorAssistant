@@ -6,7 +6,7 @@
 from Speak import Speak as app
 from Speaker import Speaker as app2
 from sys import platform
-from Calculate import Calculate
+from Calculations import Calculations
 
 
 class Commands:
