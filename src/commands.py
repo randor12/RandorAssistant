@@ -72,7 +72,7 @@ class Commands:
         Calculate a value
         :return: None
         """
-        calc = Calculate()
+        calc = Calculations()
         answer = calc.calc(self.command)
         if answer is not None:
             self.speak.respond(answer)
