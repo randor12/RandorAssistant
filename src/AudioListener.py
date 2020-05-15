@@ -8,7 +8,7 @@
 # in case of need for PyAudio installation being needed for Windows,
 # go to: https://www.lfd.uci.edu/~gohlke/pythonlibs/
 # Files will show python version and check for 32 bit or 64 bit version
-# Use pip install {python file} to install PyAudio 
+# Use pip install {python file} to install PyAudio
 
 import speech_recognition as sr
 import os
@@ -41,8 +41,8 @@ class AudioListener:
         self.text = ""
         self.command = False
         self.count = 0
-        self.speakingStartResponses = ['go ahead ryan', 'i am listening',
-                                       'what is it ryan', 'how can i help ryan']
+        self.speakingStartResponses = ['go ahead', 'i am listening',
+                                       'what is it', 'how can i help']
 
     def startMicrophone(self):
         """
