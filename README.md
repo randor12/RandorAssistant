@@ -34,6 +34,11 @@ to improve.
 # AUTHOR:
 - Ryan Nicholas
 
+# Recommendations Received:
+
+- Look into [Cron](https://opensource.com/article/17/11/how-use-cron-linux)
+- Make AI run scripts for scheduled work
+
 # Sources:
 - [Google Cloud, Accessed: April 21, 2020](https://cloud.google.com/speech-to-text/docs/how-to)
 
