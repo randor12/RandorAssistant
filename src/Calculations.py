@@ -42,6 +42,7 @@ class Calculations:
             query = req.split()[index + 1:]
             response = self.client.query(' '.join(query))
             answer = next(response.results).text
+            print("The answer is ", answer)
             return answer
         except Exception as e:
             return None
