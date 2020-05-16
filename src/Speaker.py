@@ -12,6 +12,7 @@ from datetime import datetime
 from os import path
 import json
 import requests
+from Scraper import Scraper
 
 def KToF(temp):
     """
@@ -118,7 +119,8 @@ class Speaker:
         """
         web = Scraper()
         res = web.search(msg)
-        if res is not None:
+        print("Result: ", res)
+        if res != None:
             self.respond("Sorry, I could not find an answer to that")
         else:
             self.respond("I found this on the web. " + str(res))

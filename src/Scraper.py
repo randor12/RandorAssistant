@@ -12,7 +12,9 @@ Class in order to allow for internet scraping on any topic specified
 
 
 from selenium import webdriver
-
+import requests
+from bs4 import BeautifulSoup
+import os
 
 class Scraper:
     def __init__(self):
@@ -46,14 +48,20 @@ class Scraper:
                 if 'google' in topic.lower():
                     index = topic.lower().split().index('google')
                     query = topic.split()[index + 1:]
-                    answer = self.driver.get("https://www.google.com/search?q =" + '+'.join(query))
+                    self.driver.get("https://www.google.com/search?q=" + '+'.join(query))
+                    results = driver.find_elements_by_xpath('//div[@class="r"]/a/h3')  # finds webresults
+                    value = results[0].click() # clicks the first one
+                    print('Value: ', value)
+                    answer = value.title
                 elif 'search' in topic.lower():
                     index = topic.lower().split().index('search')
                     query = topic.split()[index + 1:]
-                    answer = self.driver.get("https://www.google.com/search?q =" + '+'.join(query))
+                    answer = self.driver.get("https://www.google.com/search?q=" + '+'.join(query))
                 else:
-                    answer = self.driver.get("https://www.google.com/search?q =" + '+'.join(topic.split()))
+                    answer = self.driver.get("https://www.google.com/search?q=" + '+'.join(topic.split()))
         except Exception as e:
             print("Could not find that on the internet")
+
+        self.driver.close()
 
         return answer
