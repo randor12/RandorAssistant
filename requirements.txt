@@ -6,7 +6,7 @@ asn1crypto==0.24.0
 astor==0.8.1
 astroid==1.6.0
 audioread==2.1.8
-Babel==2.4.0
+Babel==2.9.1
 bleach==3.1.4
 Brlapi==0.6.6
 cachetools==4.0.0
